@@ -1,0 +1,66 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-container {
+    width: 80%;  /* 设置容器宽度为视口宽度的50% */
+    max-width: 600px; /* 最大宽度为600px */
+    padding: 40px; /* 增加内边距 */
+    margin: 20px auto; /* 垂直方向的外边距为20px，并自动居中 */
+    background: white; /* 背景色为白色 */
+    border-radius: 8px; /* 圆角 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 阴影效果，增加立体感 */
+    text-align: center; /* 文本居中显示 */
+}
+
+.input-group {
+    margin-bottom: 20px; /* 增加每组输入框之间的间距 */
+}
+
+input[type="text"], input[type="date"], select, button {
+    width: 100%; /* 让元素充满容器 */
+    padding: 10px;
+    margin-top: 5px; /* 顶部边距统一 */
+    margin-bottom: 5px; /* 底部边距统一 */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px; /* 字体大小统一 */
+}
+
+button {
+    padding: 12px;
+    margin-top: 15px; /* 与下拉菜单间增大间距 */
+    color: white;
+    background-color: #45a049;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+label {
+    display: block; /* 使标签在其控件之上单独一行显示 */
+    margin-bottom: 3px; /* 在标签和输入框之间添加一点间距 */
+    color: #333; /* 设置字体颜色，确保足够的对比度 */
+    font-weight: bold; /* 使文字稍微粗一点以突出显示 */
+}
+
+.input-group {
+    margin-bottom: 10px; /* 增加每组输入框之间的间距 */
+}
+
+input[type="date"] {
+    width: 100%; /* 让元素充满容器 */
+    padding: 10px;
+    margin-top: 5px; /* 顶部边距统一 */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

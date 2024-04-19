@@ -1,0 +1,123 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e9ecef;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;  /* 调整为列方向布局 */
+    align-items: center;  /* 中心对齐子元素 */
+}
+
+#loadTime {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #f8f9fa;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    font-size: 14px;
+    z-index: 1000;
+}
+
+.ticker-header {
+    width: 100%;  /* 使标题宽度与内容区域匹配 */
+    text-align: left;
+    font-size: 24px;  /* 标题字体大小 */
+    margin-bottom: 20px;  /* 增加与过滤器的间距 */
+}
+#tickerName {
+    font-size: 24px; /* 主标题字体大小 */
+    display: flex; /* 使用 flexbox 来对齐子元素 */
+    align-items: baseline; /* 确保基线对齐 */
+    gap: 10px; /* 介于标题和货币信息间的间隔 */
+}
+
+#tickerName span {
+    margin: 0; /* 移除额外的边距 */
+}
+
+.currency-info {
+    font-size: 14px; /* 较小的字体大小 */
+    color: #666; /* 较淡的字体颜色 */
+}
+.filters {
+    display: flex;
+    justify-content: start;  /* 左对齐过滤器 */
+    gap: 10px;  /* 过滤器间隙 */
+    width: 100%;  /* 过滤器宽度与表格宽度一致 */
+    margin-bottom: 20px;  /* 增加与表格的间距 */
+}
+
+.filters input, .filters button {
+    padding: 8px;
+    font-size: 16px;
+}
+
+table {
+    width: 90%;  /* 表格宽度 */
+    border-collapse: collapse;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;  /* 底部间距 */
+}
+
+th, td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff;
+    color: #ffffff;
+    position: relative;  /* 设置定位上下文 */
+}
+
+/* 叹号样式和气泡提示 */
+th.info::after {
+    content: 'i';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    background-color: #17a2b8;
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    margin-left: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+
+th.info:hover::before {
+    content: '';
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+th.info:hover::after {
+    content: attr(data-tooltip);
+    background-color: white;
+    color: black;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 300;
+    padding: 8px;
+    border-radius: 4px;
+    position: absolute;
+    top: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 1000;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    min-width: 280px;
+    max-width: 300px;
+    overflow: auto;
+}
