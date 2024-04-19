@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles1.css') }}">
+</head>
+<body>
+    <div class="content">
+        <div class="ticker-header">
+            <h2 id="tickerName">{{ ticker }}</span> <span class="currency-info">Currency in USD</span></h2>
+                <!-- 其余的filters等 -->
+            </div>
+            <div class="filters">
+                <input type="number" id="priceFilter" placeholder="Filter by Adj Price">
+                <input type="number" id="volumeFilter" placeholder="Filter by Volume">
+                <button onclick="applyFilters()">Apply Filters</button>
+            </div>
+        </div>
+        <div id="loadTime"></div> <!-- 显示加载时间的元素 -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th class="info" data-tooltip="Adjusted for splits and dividend and/or capital gain distributions">Adj Close</th>
+                    <th>Volume</th>
+                    <th class="info" data-tooltip="Difference between highest and lowest prices">High-Low Difference</th>
+                    <th class="info" data-tooltip="Difference between closing and opening prices">Close-Open Difference</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr>
+                    <td>{{ item['date'] }}</td>
+                    <td>{{ item['adjclose'] }}</td>
+                    <td>{{ item['volume'] }}</td>
+                    <td>{{ item['high_low_diff'] }}</td>
+                    <td>{{ item['close_open_diff'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var loadTime = performance.now();  // 获取页面加载到这一刻的时间
+            document.getElementById('loadTime').innerHTML = 'Page Load Time: ' + (loadTime / 1000).toFixed(2) + ' s';
+        });
+    </script>
+    <script>
+        function applyFilters() {
+            var volume = document.getElementById('volumeFilter').value;
+            var price = document.getElementById('priceFilter').value;
+            
+            // 这里的 data 应来自于您的实际数据源
+            console.log('Filters applied:', price, volume);
+        }
+    </script>
+</body>
+</html>

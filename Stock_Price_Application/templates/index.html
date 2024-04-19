@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinQuery</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- 引入 jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="search-container">
+        <h1>StockQuery</h1>
+        <form action="/search" method="post">
+            <div class="input-group">
+                <input type="text" id="ticker" name="ticker" placeholder="Enter Ticker" list="tickerList" oninput="validateInput(this)" required>
+                <datalist id="tickerList"></datalist>
+            </div>
+            <div class="input-group">
+                <label for="start_date">Start Date:</label>
+                <input type="date" id="start_date" name="start_date" min="2014-01-01" max="2025-12-31" required>
+            </div>
+            <div class="input-group">
+                <label for="end_date">End Date:</label>
+                <input type="date" id="end_date" name="end_date" min="2014-01-01" max="2025-12-31" required>
+            </div>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <script>
+        function validateInput(input) {
+            input.value = input.value.replace(/[^a-zA-Z]/g, '').toUpperCase(); // 移除非字母字符并转换为大写
+        }
+
+        $(document).ready(function(){
+            $('#ticker').on('input', function(){
+                var input = $(this).val().toUpperCase();
+                if(input.length >= 2) {
+                    $.ajax({
+                        url: '/search_ticker',
+                        type: 'GET',
+                        data: {q: input},
+                        success: function(data) {
+                            var listItems = '';
+                            for(var i = 0; i < data.length; i++) {
+                                listItems += '<option value="' + data[i] + '">';
+                            }
+                            $('#tickerList').html(listItems);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
