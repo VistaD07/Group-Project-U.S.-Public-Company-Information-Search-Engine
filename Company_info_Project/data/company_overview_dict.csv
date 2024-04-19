@@ -1,0 +1,18 @@
+Abbreviation,Full Name
+gvkey,Global Company Key
+datadate,Public Date
+fyear,Fiscal Year
+ticker,Ticker
+conm,Company Name
+curcd,Native Currency
+cik,CIK number
+add1,Company Address
+addzip,Zip code
+busdesc,S&P Business Description
+city,City
+conml,Company Legal Name
+county,Country
+phone,Company Contact
+spcindcd,S&P Industry Sector Code
+state,State
+weburl,Company Website

@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.top-bar {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.back-btn {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
+.container {
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.time-selection, .variable-selection {
+    margin-bottom: 10px;
+}
+
+.selection-container {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 5px; /* Space between selections */
+    width: 300px; /* Fixed width for alignment */
+}
+
+.checkbox-container {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 5px; /* Space between checkboxes */
+    width: 95%; /* Full width to fill the parent */
+    display: flex;
+    align-items: center;
+}
+
+.submit-btn {
+    display: block;
+    width: 200px;
+    padding: 10px;
+    margin: 20px auto;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.date-selection {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 5px; /* Space between date selections */
+    width: 300px; /* Fixed width for alignment */
+}
+
+.date-selection div {
+    margin-bottom: 10px; /* Space between date inputs */
+}
+
+.date-selection label {
+    margin-bottom: 5px; /* Space below the label */
+    display: block; /* Ensures the label is above the input */
+}
+
+.date-selection input[type="date"] {
+    width: 50%; /* Full width of the container */
+    padding: 8px; /* Padding for comfort */
+    border: 1px solid #ccc; /* Subtle border */
+    border-radius: 4px; /* Rounded corners */
+}

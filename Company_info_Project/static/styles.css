@@ -1,0 +1,51 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e9ecef;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+.login-container h1 {
+    margin-bottom: 20px;
+}
+
+.login-container form > input, 
+.login-container form > select {
+    width: 100%; /* 使输入框和下拉菜单宽度相同 */
+    padding: 10px;
+    margin-bottom: 20px; /* 保持统一的外边距 */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* 边框和内边距包含在宽度内 */
+}
+
+.submit-btn {
+    width: 50%; /* 按钮宽度小于输入框和下拉菜单 */
+    padding: 10px;
+    margin: 0 auto; /* 居中显示 */
+    display: block; /* 确保按钮独占一行 */
+    background-color: #4CAF50; /* 按钮背景颜色 */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}

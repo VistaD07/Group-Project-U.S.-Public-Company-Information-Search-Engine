@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='results.css') }}">
+</head>
+<body>
+    <div class="top-bar">
+        <a href="/" class="back-btn">Back to Home</a>
+        <a href="{{ url_for('display_options') }}" class="options-btn">Back to Options</a>
+        <div class="load-time" id="loadTime">Load time: calculating...</div>
+    </div>
+    <div class="results-container">
+        <h1>Results for {{ ticker }}</h1>
+        <p>Information Type selected: {{ info_type }}</p>
+        {% if fiscal_year %}
+        <p>Fiscal Year: {{ fiscal_year }}</p>
+        {% endif %}
+        {% if start_month and end_month %}
+        <p>Month Range: {{ start_month | month_name }} to {{ end_month | month_name }}</p>
+        {% endif %}
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        {% for var in variables %}
+                        <th>{{ var }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data %}
+                    <tr>
+                        {% for var in variables %}
+                        <td>{{ row[var] }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const startTime = performance.now(); // 获取页面加载的开始时间
+            const loadTimeElement = document.getElementById('loadTime');
+
+            window.onload = function() {
+                const loadTime = (performance.now() - startTime) / 1000; // 计算加载完成的时间
+                loadTimeElement.textContent = `Load time: ${loadTime.toFixed(2)} s`; // 显示加载时间
+            };
+        });
+    </script>
+</body>
+</html>
+

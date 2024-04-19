@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Options</title>
+    <link rel="stylesheet" href="static/display.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="/" class="back-btn">Back</a>
+    </div>
+    <div class="container">
+        <h1 class="title">Select Information for {{ info_type.replace('_', ' ').title() }}</h1>
+        <form action="{{ url_for('results') }}" method="post" onsubmit="return validateSelection()">
+            <input type="hidden" name="info_type" value="{{ info_type }}">
+            <div id="timeSelection" class="time-selection" style="{{ 'display: block;' if info_type in ['financial_statements', 'key_ratios'] else 'display: none;' }}">
+                <div id="fiscalYearContainer" class="selection-container">
+                    <label for="fiscalYear">Select Fiscal Year:</label>
+                    <select id="fiscalYear" name="fiscalYear">
+                        <option value="">--Select Year--</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                        <option value="2014">2014</option>
+                        <!-- More years as needed -->
+                    </select>
+                </div>
+                <div id="monthContainer" class="date-selection" style="{{ 'display: block;' if info_type == 'key_ratios' else 'display: none;' }}">
+                    <div class="date-field">
+                        <label for="startMonth">Select Start Month:</label>
+                        <select id="startMonth" name="startMonth">
+                            <option value="">--Select Month--</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                            <!-- Add more months as needed -->
+                        </select>
+                    </div>
+                    <div class="date-field">
+                        <label for="endMonth">Select End Month:</label>
+                        <select id="endMonth" name="endMonth">
+                            <option value="">--Select Month--</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                            <!-- Add more months as needed -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="variable-selection">
+                {% for option in options %}
+                <div class="checkbox-container">
+                    <input type="checkbox" id="{{ option }}" name="selected_options" value="{{ option }}">
+                    <label for="{{ option }}">{{ option }}</label>
+                </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="submit-btn">Submit Selection</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const infoTypeSelect = document.querySelector('input[name="info_type"]');
+            const fiscalYearContainer = document.getElementById('fiscalYearContainer');
+            const monthContainer = document.getElementById('monthContainer');
+
+            function updateVisibility() {
+                const selectedInfoType = infoTypeSelect ? infoTypeSelect.value : '{{ info_type }}';
+                fiscalYearContainer.style.display = (selectedInfoType === 'financial_statements' || selectedInfoType === 'key_ratios') ? 'block' : 'none';
+                monthContainer.style.display = (selectedInfoType === 'key_ratios') ? 'block' : 'none';
+            }
+
+            updateVisibility();
+
+            function validateSelection() {
+                const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+                if (checkboxes.length === 0) {
+                    alert('You must select at least one variable.');
+                    return false;
+                }
+                const fiscalYear = document.getElementById('fiscalYear').value;
+                const startMonth = document.getElementById('startMonth').value;
+                const endMonth = document.getElementById('endMonth').value;
+                if ((infoTypeSelect.value === 'financial_statements' && !fiscalYear) ||
+                    (infoTypeSelect.value === 'key_ratios' && (!fiscalYear || !startMonth || !endMonth))) {
+                    alert('Please ensure you have selected the required time frame.');
+                    return false;
+                }
+                return true;
+            }
+        });
+    </script>
+</body>
+</html>
+

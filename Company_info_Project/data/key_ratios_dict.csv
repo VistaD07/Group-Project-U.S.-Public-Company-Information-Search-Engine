@@ -1,0 +1,36 @@
+Abbreviation,Full Name
+gvkey,Global Company key
+permno,PERMNO Code
+bm,Book/Market ratio
+evm,Enterprise Multiple (EV/EBITDA) ratio
+pe_op_basic,Price/Operating Earnings ratio
+ps,Price/Sales
+pcf,Price/Cash Flow
+dpr,Dividend Payout ratio
+npm,Net profit margin
+gpm,Gross profit margin
+roa,Return on Assets
+roe,Return on Equity
+efftax,Effective Tax Rate
+aftret_eq,After-Tax Return on Average Common Equity
+equity_invcap,Common Equity/Invested Capital
+debt_invcap,Long-term Debt/Invested Capital
+totdebt_invcap,Total Debt/Invested Capital
+capital_ratio,Capitalization Ratio
+debt_ebitda,Total Debt/EBITDA
+debt_assets,Total Debt/Total Assets
+de_ratio,Total Debt/Equity
+cash_conversion,Cash Conversion Cycle
+inv_turn,Inventory Turnover
+at_turn,Asset Turnover
+sale_equity,Sales/Stockholders Equity
+rd_sale,R&D Expense/Sales
+adv_sale,Advertising Expense/Sales
+staff_sale,Labor Expense/Sales
+accrual,Accruals/Average Assets
+ptb,Price/Book
+peg_trailing,Trailling P/E to Growth
+divyield,Dividend Yield
+ticker,Ticker
+year,Year
+month,Month

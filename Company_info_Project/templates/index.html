@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Query</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Company Query</h1>
+        <form action="/search" method="post" id="queryForm">
+            <input type="text" id="ticker" name="ticker" placeholder="Please enter ticker" autocomplete="off">
+            <select name="info_type">
+                <option value="company_overview">Company Overview</option>
+                <option value="financial_statements">Annual Financial Statements</option>
+                <option value="key_ratios">Key Ratios</option>
+            </select>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#ticker').autocomplete({
+                source: function(request, response) {
+                    $.getJSON('/search_ticker', { q: request.term }, function(data) {
+                        response(data);
+                    });
+                },
+                minLength: 2
+            });
+        });
+    </script>
+</body>
+</html>
