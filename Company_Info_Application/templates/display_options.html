@@ -12,7 +12,7 @@
         <a href="/" class="back-btn">Back</a>
     </div>
     <div class="container">
-        <h1 class="title">Select Information for {{ info_type.replace('_', ' ').title() }}</h1>
+        <h1 class="title">Select Variables for {{ info_type.replace('_', ' ').title() }}</h1>
         <form action="{{ url_for('results') }}" method="post" onsubmit="return validateSelection()">
             <input type="hidden" name="info_type" value="{{ info_type }}">
             <div id="timeSelection" class="time-selection" style="{{ 'display: block;' if info_type in ['financial_statements', 'key_ratios'] else 'display: none;' }}">
